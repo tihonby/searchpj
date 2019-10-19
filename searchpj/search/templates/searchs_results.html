@@ -1,0 +1,21 @@
+{% extends 'search/base.html' %}
+{% load bootstrap3 %}
+
+{% block head %}
+<h1 style="color:blue">Searchs Results</h1>
+<h1>Searchs Results</h1>
+{% endblock %}
+
+{% block content %}
+    {% block page %}
+    <ul>
+      {% for book in object_list %}
+        <li>
+          {{ book.name }}, {{ book.state }}
+        </li>
+      {% endfor %}
+    </ul>
+    {% endblock page %}
+    {% block sidebar %}
+    {% endblock %}
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'search/base.html' %}
+
+
+{% load bootstrap3 %}
+
+{% block head %}
+<h1>HomePage</h1>
+
+<form action="{% url 'searchs_results' %}" class="navbar-form navbar-left" method="get">
+    <div class="input-group">
+        <input id="search" name="q" type="text" class="form-control" placeholder="Поиск">
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">{% bootstrap_icon 'search' %}</button>
+        </span>
+    </div>
+</form>
+{% endblock %}
+
+{% block page %}
+    <h1>Поиск</h1>
+    {% if article_lists %}
+        {% for article in article_lists %}
+            <article>
+                <a href="{{ article.get_absolute_url }}">
+                    <h2>{{ article.article_title }}</h2>
+                </a>
+                {{ article.desctription|safe }}
+                <p><a class="btn btn-default btn-sm" href="{{ article.get_absolute_url }}">Читать далее</a></p>
+            </article>
+        {% endfor %}
+        {% bootstrap_pagination article_lists url=last_question %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+
+{% endblock %}
+
+<!-- templates/home.html
+<h1>HomePage</h1>
+
+<form action="{% url 'searchs_results' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+-->
