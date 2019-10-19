@@ -1,35 +1,5 @@
 {% load static %}
 
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{% block title %}Book search{% endblock %}</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya|Merriweather+Sans|Pacifico&display=swap" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet"></link>
-  </head>
-  <body>
-
-    <div id="app">
-
-          <form method="GET" action="/search">
-            <input name="q" id="search-field" placeholder="Search" type="text">
-          </form>
-          <div class="cards">
-            {% for car in cars %}
-                {% include 'home.html' %}
-            {% endfor %}
-          </div>
-
-    </div>
-    <footer class="footer">
-      Contact
-    </footer>
-  </body>
-</html>
 {% block head %}
 {% endblock %}
 {% block content %}
@@ -40,3 +10,21 @@
 {% endblock content %}
 {% block footer %}
 {% endblock %}
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Book search{% endblock %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Merriweather+Sans|Pacifico&display=swap" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet"></link>
+  </head>
+  <body>
+
+    <footer class="footer">
+
+    </footer>
+  </body>
+</html>

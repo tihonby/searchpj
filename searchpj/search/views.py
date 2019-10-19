@@ -14,8 +14,11 @@ class SearchsResultsView(ListView):
 
     def get_queryset(self): # new
         query = self.request.GET.get('q')
-        object_list = Book.objects.filter(
-            Q(book__icontains=query) | Q(author__icontains=query) |
-            Q(texts__icontains=query)
-        )
+        if query == '':
+            object_list = None
+        else:
+            object_list = Book.objects.filter(
+                Q(book__icontains=query) | Q(author__icontains=query) |
+                Q(urls__icontains=query) | Q(texts__icontains=query)
+            )
         return object_list

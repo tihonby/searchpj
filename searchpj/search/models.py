@@ -11,4 +11,4 @@ class Book(models.Model):
       verbose_name_plural = "books"
 
     def __str__(self):
-        return self.name
+        return self.book

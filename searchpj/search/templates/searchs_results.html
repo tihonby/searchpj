@@ -1,21 +1,51 @@
 {% extends 'search/base.html' %}
+{% load static %}
 {% load bootstrap3 %}
 
+
 {% block head %}
-<h1 style="color:blue">Searchs Results</h1>
-<h1>Searchs Results</h1>
+<div ><a style="color:green" href="https://enjoybooks.pw"> На главную сайта </a>
+</div>
 {% endblock %}
 
 {% block content %}
     {% block page %}
-    <ul>
-      {% for book in object_list %}
-        <li>
-          {{ book.name }}, {{ book.state }}
-        </li>
-      {% endfor %}
-    </ul>
+
+    <h1 style="color:blue">Новый поиск:</h1>
+    <div>
+        <form action="{% url 'searchs_results' %}" class="navbar-form navbar-left" method="get">
+            <div class="input-group">
+                <input id="search" name="q" type="text" class="form-control" placeholder="Поиск">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">{% bootstrap_icon 'search' %}</button>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div><br><br><br>
+    </div>
+    <div style="display:block; clear:both">
+    <h2 style="color:blue">Результаты поиска:                        </h2>
+    </div>
+
     {% endblock page %}
     {% block sidebar %}
+    <div>
+    {% if object_list %}
+        <ol>
+          {% for books in object_list %}
+
+            <li>
+              <p> Книга: "{{ books.book }}" Автор: {{ books.author }}</p>
+               <a href="{{ books.urls }}">{{ books.urls }}</a>
+            </li>
+
+          {% endfor %}
+        </ol>
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+    </div>
     {% endblock %}
 {% endblock content %}
