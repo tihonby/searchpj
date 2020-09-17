@@ -1,28 +1,24 @@
 # Search Project 
-## Поисковая программа 
-Настроена для поиска книг по сайту и возвращения результатов поиска. 
+## Search program 
+Configured to search the site for books and return search results.
 
-## Функции
-По ключевым словам названия книги, текста, имени автора либо части url находит соответствие и предоставляет результат в виде перечня название, автор и URL.
+## Functions
+By keywords of the book title, text, author name or part of the url finds a match and provides the result in the form of a list of title, author and URL.
 
-## Компоненты
-Веб-фреймворк: Django 2.2, база данных: PostgreSQL, веб-краулер: Scrapy.
+## Components
+Django 2.2, PostgreSQL, Scrapy.
 
-## Выполнение
-Веб-краулер сканирует сайт, выделяя следующую информацию: название книги, автора, url и анотацию к книге. Возможен вывод в формате csv или json.
-Информация записывается в базу данных, откуда и происходит поиск по запросу.
+## Implementation
+The web crawler crawls the site, highlighting the following information: title of the book, author, url, and abstract to the book. Possible output in csv or json format.
+The information is recorded in the database, from where the search on request takes place.
 
-## Hастройки
-в файле скрапера my_scraper/scraper.py записывается первая страница поиска, настраиваются поисковые запросы по тегам и прохождение по сайту. Скрапер запускается командой:
+## Settings
+the first page of the search is written to the parser file my scraper / scraper.py, the search queries by tags and the passage through the site are configured. The scraper is started by the command:
 ```bash
 scrapy runspider scraper.py 
-     эта команда создает соответствующий файл:
+     this command creates the corresponding file:
 scrapy runspider scraper.py -o output.csv -t csv
 scrapy runspider scraper.py -o output.json
 ```
-## особенности
-при xpath- экстракции на однотипных тегах не корректно происходила итерация (или вообще не происходила), и информация по одному из полей поиска добавлялась одинаковая ко всем результатам по странице. В конечном итоге пришлось ограничиться css, хотя это и менее удобно.
-
-
-
-
+## Features
+When extracting xpath by tags of the same type, iteration did not occur correctly (or did not happen at all), and information on one of the search fields was added equally to all results on the page. As a result, I had to limit myself to css, although this is less convenient.
